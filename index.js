@@ -16,13 +16,19 @@ class Board extends React.Component {
   super(props);
   this.state = {
     squares: Array(9).fill(null),
+    xIsNext: true,
   };
 } //Board will now hold square state information
 
 handleClick(i) {
   const squares = this.state.squares.slice();
-  squares[i] = 'X';
-  this.setState({squares: squares});
+  squares[i] = this.state.xIsNext ? 'X' : 'O'; //True means X, False means O
+  this.setState({
+    squares: squares,
+    xIsNext: !this.state.xIsNext, //Alternates between True and False
+  });
+
+
 } //Now we can fill squares with X on click again
 
 renderSquare(i) {
