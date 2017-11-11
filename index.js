@@ -3,12 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-    value: null, //Could fill with props.value to display the square number
-  };
-}
 
   render() {
     return (
@@ -20,9 +14,22 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
-  renderSquare(i) {
-    return <Square value={i} />;
-  }
+
+  constructor(props) {
+  super(props);
+  this.state = {
+    squares: Array(9).fill(null),
+  };
+} //Board will now hold square state information
+
+renderSquare(i) {
+  return (
+    <Square
+      value={this.state.squares[i]}
+      onClick={() => this.handleClick(i)}
+    />
+  );
+}
 
   render() {
     const status = 'Next player: X';
