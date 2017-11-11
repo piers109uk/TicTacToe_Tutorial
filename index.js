@@ -22,6 +22,12 @@ class Board extends React.Component {
   };
 } //Board will now hold square state information
 
+handleClick(i) {
+  const squares = this.state.squares.slice();
+  squares[i] = 'X';
+  this.setState({squares: squares});
+} //Now we can fill squares with X on click again
+
 renderSquare(i) {
   return (
     <Square
